@@ -1,0 +1,16 @@
+<?php
+$api_key = "5b3ce3597851110001cf6248815c35339e694fde96ecb05c571c3629";
+$start = $_GET['start'];
+$end = $_GET['end'];
+
+$url = "https://api.openrouteservice.org/v2/directions/driving-car?api_key=$api_key&start=$start&end=$end";
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$response = curl_exec($ch);
+curl_close($ch);
+
+header('Content-Type: application/json');
+echo $response;
+?>
